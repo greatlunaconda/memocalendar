@@ -42,13 +42,19 @@ export default function HomePage() {
     }
     return days
   }, [currentYear, currentMonth, memoKeys])
+const dst1 = "w-full h-screen flex flex-col p-5box-border";
+const dst2 = "mx-auto max-w-3xl p-5";
+const gst1 = "flex-1 w-full grid grid-cols-7 grid-rows-6 gap-2.5";
+const gst2 = "grid grid-cols-7 gap-2.5";
+const lst1 = "w-full h-full relative cursor-pointer border border-gray-300 p-2.5 hover:bg-gray-100 flex flex-col justify-between";
+const lst2 = "relative aspect-square cursor-pointer border border-gray-300 p-2.5 hover:bg-gray-100";
 
   return (
-    <div className="mx-auto max-w-3xl p-5">
+    <div className={dst1}>
       <h1 className="mb-5 text-center text-2xl font-bold">
         {currentYear}年{currentMonth}月
       </h1>
-      <div className="grid grid-cols-7 gap-2.5">
+      <div className={gst1}>
         {calendarDays.map((day) =>
           day.isCurrentMonth ? (
             // NuxtLink → next/link（:prefetch="false" は prefetch={false}）
@@ -56,8 +62,7 @@ export default function HomePage() {
               key={day.date}
               href={`/edit/${day.date}`}
               prefetch={false}
-              className="relative aspect-square cursor-pointer border border-gray-300 p-2.5 hover:bg-gray-100"
-            >
+              className={lst1}            >
               <div className="font-bold">{day.day}</div>
               {day.hasMemo && (
                 <div className="absolute bottom-1 right-1 text-xl text-green-500">●</div>
